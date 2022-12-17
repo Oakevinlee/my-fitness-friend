@@ -1,17 +1,31 @@
 const Food = require('../../models/food')
-var fetch = require("node-fetch")
 const apiKey = process.env.API_KEY
-const baseUrl = 'https://api.spoonacular.com/food/search?query='
+const baseUrl = 'https://developer.nrel.gov/api/alt-fuel-stations/v1.json?limit=1'
 
 module.exports = {
     getFood,
-}
+};
 
 async function getFood(req, res) {
-    let foods = await fetch(`https://api.spoonacular.com/food/search?query=apple&number=1&apiKey=36ab365c911e40acbbf164842e09c676=${req.body.value}`).then((response) => response.json());
-    res.json(food.searchResults)
+    try {
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '1af2a83170msh2f13db84141404cp145d32jsn31ff3b3ff802',
+                'X-RapidAPI-Host': 'nutritionix-api.p.rapidapi.com'
+            }
+        }; 
+        
+        let data = await fetch(`https://nutritionix-api.p.rapidapi.com/v1_1/search/${req.query.q}?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat`, options)
+        let foods = await data.json()
+        console.log('foods ', foods)
+        return res.json(foods)
+
+    } catch (err) {
+        res.json(err)
+    }
+
     
 }
 
 
-console.log(getFood())

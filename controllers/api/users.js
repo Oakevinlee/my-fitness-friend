@@ -1,11 +1,13 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../../models/user');
+const foodItem = require('../../mdoels/foodItem');
 
 module.exports = {
   create,
   login,
   checkToken
+
 };
 
 async function create(req, res) {
