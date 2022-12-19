@@ -5,5 +5,5 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn')
 
 router.get('/getFood', foodsCtrl.getFood);
 
-
+ 
 module.exports = router;

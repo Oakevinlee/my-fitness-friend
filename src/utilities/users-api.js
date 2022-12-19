@@ -13,4 +13,8 @@ export async function login(credentials) {
 export async function checkToken() {
   return sendRequest(`${BASE_URL}/check-token`);
 }
+export async function submitFoodItem(item) {
+  console.log('submitting .. ', item)
+  return sendRequest(`${BASE_URL}/foodItems`, 'POST', item);
 
+}

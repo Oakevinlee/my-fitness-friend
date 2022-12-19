@@ -1,16 +1,16 @@
 import ResultsPage from '../ResultsPage/ResultsPage';
 import {useState, useEffect} from 'react'
 import * as foodsApi from '../../utilities/foods-api'
+import * as usersApi from '../../utilities/users-api'
 
 export default function TrackFood() {
   const [formData, setFormData] = useState('')
   const [results, setResults] = useState();
 
-  // useEffect(()=> {
+  
     async function getFoodItem() {
       console.log('getting food ',formData)
-      // TODO: laila -- clean this up later, for example handle the cases where the result is an error,
-      // or there are no hits
+      
       const res = await foodsApi.getFood(formData)
       console.log('getFoodItem results ', results)
       // const data = results.hits && results.hits[0]
@@ -21,6 +21,22 @@ export default function TrackFood() {
     evt.preventDefault()
     getFoodItem()
   }; 
+
+  async function submitFoodItem() {
+    console.log('submitting food ',formData)
+    
+    const res = await usersApi.submitFoodItem(results.fields)
+    console.log('getFoodItem results ', results)
+    
+    
+  }
+
+  async function handleLogItem(evt){
+    evt.preventDefault()
+    await submitFoodItem(formData)
+    setFormData('')
+    setResults()
+  }
   
   useEffect(() => {
     console.log('results changed ', results)
@@ -39,18 +55,16 @@ export default function TrackFood() {
 
     <button type='submit'>Submit</button>
     </form>
-    {/* < ResultsPage results={results}/> */}
-    {/* {results.map((data) => {
-      return (
-        <li key={data.id}>{data.nf_calories}</li>
-      )
-    })} */}
+
+
     { results && (
       <ul>
  <h1> Results: </h1>
       <li key={1}>'Name of food: '<p>{results.fields.item_name}</p></li>
       <li key={2}><p> 'Calories: '</p> <p>{results.fields.nf_calories}</p></li>
+      <button onClick={handleLogItem}>log item</button>
       </ul>
+
      
     )}
 

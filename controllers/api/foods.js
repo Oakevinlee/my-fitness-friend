@@ -7,6 +7,7 @@ module.exports = {
 };
 
 async function getFood(req, res) {
+    console.log('getting food: :: ')
     try {
         const options = {
             method: 'GET',
@@ -18,7 +19,7 @@ async function getFood(req, res) {
         
         let data = await fetch(`https://nutritionix-api.p.rapidapi.com/v1_1/search/${req.query.q}?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat`, options)
         let foods = await data.json()
-        console.log('foods ', foods)
+        console.log('------ foods ', foods)
         return res.json(foods)
 
     } catch (err) {

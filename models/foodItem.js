@@ -1,26 +1,22 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const bcrypt = require('bcrypt');
-
-const SALT_ROUNDS = 6;
 
 const foodItemsSchema = new Schema({
   name: {type: String, required: true},
-  
-  foodLogid: {type: Number, required: true},
 
   calories: {type: Number, required: true},
 
-  quantitiy: {type: Number, required: true}
+  quantity: {type: Number, required: true},
+  
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
   
   
 }, {
-  timestamps: true,
-  toJSON: {
-    transform: function(doc, ret) {
-      return ret;
-    }
-  }
+  timestamps: true, 
 });
 
-module.exports = mongoose.model('FoodItem', foodItemSchema);
+module.exports = mongoose.model('FoodItem', foodItemsSchema);
