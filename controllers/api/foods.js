@@ -1,9 +1,10 @@
-const Food = require('../../models/food')
+const FoodItem = require('../../models/foodItem')
 const apiKey = process.env.API_KEY
 const baseUrl = 'https://developer.nrel.gov/api/alt-fuel-stations/v1.json?limit=1'
 
 module.exports = {
     getFood,
+    getAll,
 };
 
 async function getFood(req, res) {
@@ -19,7 +20,7 @@ async function getFood(req, res) {
         
         let data = await fetch(`https://nutritionix-api.p.rapidapi.com/v1_1/search/${req.query.q}?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat`, options)
         let foods = await data.json()
-        console.log('------ foods ', foods)
+        
         return res.json(foods)
 
     } catch (err) {
@@ -29,4 +30,12 @@ async function getFood(req, res) {
     
 }
 
+async function getAll(req, res) {
+    var startOfToday = new Date();
+startOfToday.setHours(0,0,0,0);
+
+
+    const food = await FoodItem.find({"createdAt": { "$gte": startOfToday }})
+    res.json(food)
+}
 

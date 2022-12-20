@@ -2,10 +2,13 @@ import ResultsPage from '../ResultsPage/ResultsPage';
 import {useState, useEffect} from 'react'
 import * as foodsApi from '../../utilities/foods-api'
 import * as usersApi from '../../utilities/users-api'
+import ResultItems from '../../components/ResultItems/ResultItems';
+import FoodList from '../../components/FoodList/FoodList';
 
 export default function TrackFood() {
   const [formData, setFormData] = useState('')
   const [results, setResults] = useState();
+  const[foods, setFoods] = useState([])
 
   
     async function getFoodItem() {
@@ -13,10 +16,10 @@ export default function TrackFood() {
       
       const res = await foodsApi.getFood(formData)
       console.log('getFoodItem results ', results)
-      // const data = results.hits && results.hits[0]
+    
       setResults(res.hits[0])
     }
-//  })
+    
   function handleSubmit(evt){
     evt.preventDefault()
     getFoodItem()
@@ -27,9 +30,15 @@ export default function TrackFood() {
     
     const res = await usersApi.submitFoodItem(results.fields)
     console.log('getFoodItem results ', results)
+    setFoods([...foods, res])
     
     
   }
+
+  // async function handleChangeQty(itemId, newQty) {
+  //   const updatedTrackFood = await foodsApi.setItemQtyInTrackFood(itemId, newQty);
+  //   setTrackFood(updatedTrackFood)
+  // }
 
   async function handleLogItem(evt){
     evt.preventDefault()
@@ -37,10 +46,6 @@ export default function TrackFood() {
     setFormData('')
     setResults()
   }
-  
-  useEffect(() => {
-    console.log('results changed ', results)
-  }, [results])
 
 
   return (
@@ -58,16 +63,21 @@ export default function TrackFood() {
 
 
     { results && (
+//       results.map((result, idx) => {
+//         < ResultItems result = {result} />
+//       })
       <ul>
  <h1> Results: </h1>
-      <li key={1}>'Name of food: '<p>{results.fields.item_name}</p></li>
-      <li key={2}><p> 'Calories: '</p> <p>{results.fields.nf_calories}</p></li>
+      <li key={1}>Name of food: <p>{results.fields.item_name}</p></li>
+      <li key={2}><p> Calories: </p> <p>{results.fields.nf_calories}</p></li>
       <button onClick={handleLogItem}>log item</button>
       </ul>
 
+
+
      
     )}
-
+    < FoodList foods ={foods} setFoods={setFoods} />
     </>
   );
 }

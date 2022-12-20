@@ -7,5 +7,7 @@ export async function getFood(search) {
 }
 
 
-
+export async function getAll() {
+    return sendRequest(`${BASE_URL}/new`)
+}
 

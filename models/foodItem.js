@@ -14,7 +14,6 @@ const foodItemsSchema = new Schema({
     required: true,
   },
   
-  
 }, {
   timestamps: true, 
 });
