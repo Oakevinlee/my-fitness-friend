@@ -11,3 +11,6 @@ export async function getAll() {
     return sendRequest(`${BASE_URL}/new`)
 }
 
+export async function deleteFoodItem(id) {
+    return sendRequest(`${BASE_URL}/${id}`, "DELETE");
+}

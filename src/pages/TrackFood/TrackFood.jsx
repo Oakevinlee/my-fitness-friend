@@ -35,11 +35,6 @@ export default function TrackFood() {
     
   }
 
-  // async function handleChangeQty(itemId, newQty) {
-  //   const updatedTrackFood = await foodsApi.setItemQtyInTrackFood(itemId, newQty);
-  //   setTrackFood(updatedTrackFood)
-  // }
-
   async function handleLogItem(evt){
     evt.preventDefault()
     await submitFoodItem(formData)
@@ -63,11 +58,8 @@ export default function TrackFood() {
 
 
     { results && (
-//       results.map((result, idx) => {
-//         < ResultItems result = {result} />
-//       })
       <ul>
- <h1> Results: </h1>
+      <h1> Results: </h1>
       <li key={1}>Name of food: <p>{results.fields.item_name}</p></li>
       <li key={2}><p> Calories: </p> <p>{results.fields.nf_calories}</p></li>
       <button onClick={handleLogItem}>log item</button>

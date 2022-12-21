@@ -1,3 +1,4 @@
+const foodItem = require('../../models/foodItem');
 const FoodItem = require('../../models/foodItem')
 const apiKey = process.env.API_KEY
 const baseUrl = 'https://developer.nrel.gov/api/alt-fuel-stations/v1.json?limit=1'
@@ -5,6 +6,7 @@ const baseUrl = 'https://developer.nrel.gov/api/alt-fuel-stations/v1.json?limit=
 module.exports = {
     getFood,
     getAll,
+    deleteFood
 };
 
 async function getFood(req, res) {
@@ -29,6 +31,11 @@ async function getFood(req, res) {
 
     
 }
+async function deleteFood(req, res) {
+     const foodItem =  await FoodItem.findByIdAndDelete(req.params.id)
+     res.json(foodItem)
+     
+}
 
 async function getAll(req, res) {
     var startOfToday = new Date();
@@ -38,4 +45,3 @@ startOfToday.setHours(0,0,0,0);
     const food = await FoodItem.find({"createdAt": { "$gte": startOfToday }})
     res.json(food)
 }
-
