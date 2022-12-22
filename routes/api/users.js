@@ -5,13 +5,8 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn')
 const foodItems = require('../../controllers/api/foodItems');
 
 router.post('/foodItems', foodItems.create);
-// All paths start with '/api/users'
-
-// POST /api/users (create a user - sign up)
 router.post('/', usersCtrl.create);
-// POST /api/users/login
 router.post('/login', usersCtrl.login);
-// GET /api/users/check-token
 router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken);
 
 module.exports = router;

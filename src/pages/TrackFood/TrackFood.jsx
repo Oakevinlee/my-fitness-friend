@@ -10,7 +10,6 @@ export default function TrackFood() {
   const [results, setResults] = useState();
   const[foods, setFoods] = useState([])
 
-  
     async function getFoodItem() {
       console.log('getting food ',formData)
       
@@ -45,8 +44,10 @@ export default function TrackFood() {
 
   return (
     <>
-    <h1>Track your food</h1>
-    <form onSubmit={handleSubmit}>
+    <h1 className='track'>Track your food</h1>
+    <div className='center-form'>
+
+    <form className='food-submit' onSubmit={handleSubmit}>
       <input 
       type="text" 
       name="search" 
@@ -55,13 +56,14 @@ export default function TrackFood() {
 
     <button type='submit'>Submit</button>
     </form>
+      </div>
 
 
     { results && (
-      <ul>
-      <h1> Results: </h1>
-      <li key={1}>Name of food: <p>{results.fields.item_name}</p></li>
-      <li key={2}><p> Calories: </p> <p>{results.fields.nf_calories}</p></li>
+      <ul className='food-list'>
+      <h1 className='track'> Results: </h1>
+      <li className='pick-food' key={1}>Name of food: <p>{results.fields.item_name}</p></li>
+      <li className='pick-food' key={2}><p> Calories: </p> <p>{results.fields.nf_calories}</p></li>
       <button onClick={handleLogItem}>log item</button>
       </ul>
 

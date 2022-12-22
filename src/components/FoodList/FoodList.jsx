@@ -3,17 +3,6 @@ import * as foodsApi from '../../utilities/foods-api';
 export default function FoodList({foods, setFoods}) {
     let total = 0;
  
-    // const[totalCalories, setTotalCalories] = useState(null);
-    // // useEffect(() => {
-    // //     function getTotalCalories(){
-    // //         const totalCalories = foods.forEach(calorie =>(
-    // //             total += calorie.calories
-    // //         ))
-    // //         setTotalCalories(totalCalories);
-    // //     }
-    // //     getTotalCalories();
-    // // }, [foods, calorie])
- 
     const totalCalories = foods && foods.forEach(calorie =>(
          total += calorie.calories
         
@@ -33,22 +22,19 @@ export default function FoodList({foods, setFoods}) {
        } 
        getAllFoods()
     },[])
-    console.log(foods)
+  
     return (
     <>
-    <h1>{total}</h1>
+    <h1 className="food-total">{total.toFixed(2)} calories</h1>
    {
     foods && foods.map((f, idx) =>(
-        <div key={idx}>
-            <p>{f.name}</p>
-            <p>{f.calories}</p>
-            <button onClick={() => handleDelete(f._id)}>delete</button>
+        <div className="food-result" key={idx}>
+            <p className="result-list">{f.name}</p>
+            <p className="result-list">{f.calories} calories</p>
+            <button className="food-delete" onClick={() => handleDelete(f._id)}>delete</button>
         </div>
     ))
    }
-
-
-   
-    </>
+   </>
   );
 }

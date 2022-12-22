@@ -1,0 +1,96 @@
+.App {
+  height: 100%;
+}
+
+.track {
+  color: midnightblue;
+  text-align: center;
+  
+}
+
+.food-submit {
+  text-align: center;
+}
+
+.food-list {
+  text-align: center;
+}
+
+.food-result {
+  text-align: center;
+  color: red;
+  border: 4px solid gold;
+  padding: 0.5rem;
+  margin: auto;
+  background-color: white;
+}
+
+.food-total {
+  text-align: center;
+  color: red;
+  border: 4px solid gold;
+  padding: 0.5rem;
+  background-color: white;
+}
+
+.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.navbar Link {
+  display: block;
+  color: white;
+  text-decoration: none;
+}
+
+.food-delete {
+  border-color: green;
+  color: red;
+}
+
+body {
+  background-image: url('https://media.giphy.com/media/3o7btUDtnx3gTwIlmo/giphy.gif');
+  
+}
+
+.result-list {
+  color: goldenrod
+}
+
+.pick-food {
+  text-align: center;
+  color: rgb(75, 12, 12);
+  border: 4px solid gold;
+  padding: 0.5rem;
+  background-color: white;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+
+.center-form input {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 95vw
+}
+.center-form button {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 95vw
+}
+
+.intro {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  color: rgb(212, 117, 117);
+  border: 4px solid gold;
+  padding: 0.5rem;
+  margin: auto;
+  background-color: white;
+
+}

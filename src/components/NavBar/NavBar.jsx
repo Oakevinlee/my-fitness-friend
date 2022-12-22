@@ -6,9 +6,8 @@ export default function NavBar({ user, setUser }) {
     userService.logOut();
     setUser(null);
   }
-
-  return (
-    <nav>
+ return (
+    <nav className='navbar'>
       <span>Welcome, {user.name}</span>
       &nbsp;&nbsp;
       <Link to="/">H O M E</Link>

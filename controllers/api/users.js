@@ -37,11 +37,8 @@ function checkToken(req, res) {
   res.json(req.exp);
 }
 
-/*--- Helper Functions --*/
-
 function createJWT(user) {
   return jwt.sign(
-    // data payload
     { user },
     process.env.SECRET,
     { expiresIn: '24h' }
