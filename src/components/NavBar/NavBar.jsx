@@ -10,7 +10,7 @@ export default function NavBar({ user, setUser }) {
     <nav className='navbar'>
       <span>Welcome, {user.name}</span>
       &nbsp;&nbsp;
-      <Link to="/">H O M E</Link>
+      <Link to="/">A B O U T</Link>
       &nbsp; | &nbsp;
       <Link to="/foods/new">Track Food</Link>
       &nbsp;&nbsp;
