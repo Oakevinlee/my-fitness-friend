@@ -39,7 +39,7 @@ Its current state is usuable, but I plan on adding many more features as I conti
 
 
 ## Check it put
-Click the link to demo the app! https://my-fitness-friend.herokuapp.com/foods/new
+Click the link to demo the app! https://my-fitness-friend.herokuapp.com
 
 ## Planning
 
