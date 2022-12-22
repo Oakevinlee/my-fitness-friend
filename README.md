@@ -1,5 +1,4 @@
-# Local Hoops App
- 
+# My Fitness Friend 
 ## Description
 
 This is my final project for my time at General Assembly. I developed a very basic calorie counting application better monitor my daily caloric intake.

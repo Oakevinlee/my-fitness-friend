@@ -3,7 +3,6 @@ const FoodItem = require('../../models/foodItem');
 
 module.exports = {
   create,
-//   delete: deleteFood,
 };
 
 async function create(req, res) {
@@ -16,7 +15,3 @@ async function create(req, res) {
   }
 }
 
-// async function deleteFood(req, res) {
-//     const byeFood = await foodItem.findByIdAndDelete(req.params.id);
-//     res.json(foodItem);
-// }
